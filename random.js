@@ -1,39 +1,27 @@
-function generateRandomOrder() {
-    // 生年月日を取得
-    let birthDate = document.getElementById("birthDate").value;
 
-    // 生年月日が入力されているか確認
-    if (!birthDate) {
-        alert("生年月日を選択してください");
-        return;
+function openFortuneWindow() {
+    // 誕生日の日付を取得
+    const birthdayInput = document.getElementById('birthday').value;
+
+    if (birthdayInput) {
+        // 占い結果の配列
+        const fortunes = [
+            "Aです。",
+            "Bです。",
+            "Cです。",
+            "Dです。"
+        ];
+
+        // ランダムに占い結果を選ぶ
+        const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+
+        // 4つの外部HTMLファイルのいずれかをランダムに選ぶ
+        const randomIndex = Math.floor(Math.random() * 4) + 1; // 1 から 4 の間でランダムな番号
+        const fortuneFile = `fortune${randomIndex}.html`; 
+
+        // 新しいウィンドウを開き、選ばれたファイルを表示
+        const newWindow = window.open(fortuneFile + '?fortune=' + encodeURIComponent(randomFortune), '_blank');
+    } else {
+        alert("誕生日を選択してください！");
     }
-
-    // 年、月、日を分割して取得
-    let [year, month, day] = birthDate.split('-');
-
-    // ランダムにa, b, c, dの並び順を生成
-    let randomOrder = getRandomOrder(year + month + day);
-
-    // ランダムな並び順を表示
-    document.getElementById("result").innerText = "結果: " + randomOrder.join('');
 }
-
-function getRandomOrder(birthDate) {
-    // 生年月日を基に乱数を生成
-    let seed = 0;
-    for (let i = 0; i < birthDate.length; i++) {
-        seed += birthDate.charCodeAt(i); // 各文字のUnicode値を加算
-    }
-
-    // 並び順を決定する配列
-    let choices = ['a', 'b', 'c', 'd'];
-
-    // 乱数を基に配列をシャッフル
-    for (let i = choices.length - 1; i > 0; i--) {
-        let j = Math.abs(seed + i) % choices.length; // ランダムなインデックスを生成
-        [choices[i], choices[j]] = [choices[j], choices[i]]; // シャッフル
-    }
-
-    return choices;
-}
-        
