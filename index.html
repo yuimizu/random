@@ -6,12 +6,26 @@
   <title>占い</title>
 </head>
 <body>
-
-  <label for="birthdate">生年月日を入力してください：</label>
+  <h1>生年月日を選択してください</h1>
+  <label for="birthdate">生年月日：</label>
   <input type="date" id="birthdate">
-  <br>
-  <button onclick="showFortune()">START</button>
+  <button onclick="goToResultPage()">結果を見る</button>
 
-  <script src="random.js"></script>
+  <script>
+    function goToResultPage() {
+      const birthdate = document.getElementById('birthdate').value;
 
+      if (!birthdate) {
+        alert("生年月日を入力してください！");
+        return;
+      }
+
+      // 結果ページに遷移し、生年月日をクエリパラメータとして渡す
+      const targetPage = "result.html";
+      window.location.href = `${targetPage}?birthdate=${encodeURIComponent(birthdate)}`;
+    }
+  </script>
 </body>
+</html>
+
+

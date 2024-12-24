@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>占い結果</title>
+</head>
+<body>
+  <h1>占い結果</h1>
+  <div id="results"></div>
+
+  <script>
+    // クエリパラメータを取得する関数
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // 配列をシャッフルする関数 (誕生日を基にシードを生成)
+    function seededShuffle(array, seed) {
+      const random = () => {
+        seed = (seed * 9301 + 49297) % 233280; // 線形合同法による乱数生成
+        return seed / 233280;
+      };
+
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const birthdate = getQueryParam("birthdate");
+      const resultsDiv = document.getElementById("results");
+
+      if (!birthdate) {
+        resultsDiv.textContent = "生年月日が指定されていません。";
+        return;
+      }
+
+      const items = ["A", "B", "C", "D"]; // 表示する項目
+
+      // 誕生日を基にシードを生成 (年+月+日の数値)
+      const seed = parseInt(birthdate.replace(/-/g, ""), 10);
+      const shuffledItems = seededShuffle(items, seed);
+
+      // 結果を表示
+      shuffledItems.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "result-item";
+        div.textContent = item;
+        resultsDiv.appendChild(div);
+      });
+    });
+  </script>
+</body>
+</html>
