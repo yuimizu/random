@@ -9,7 +9,7 @@ function openFortuneWindow() {
             "Aです。",
             "Bです。",
             "Cです。",
-            "Dです。"
+            "Dです。",
         ];
 
         // ランダムに占い結果を選ぶ
