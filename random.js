@@ -1,27 +1,22 @@
+function showFortune() {
+    const birthdate = document.getElementById('birthdate').value;
 
-function openFortuneWindow() {
-    // 誕生日の日付を取得
-    const birthdayInput = document.getElementById('birthday').value;
-
-    if (birthdayInput) {
-        // 占い結果の配列
-        const fortunes = [
-            "Aです。",
-            "Bです。",
-            "Cです。",
-            "Dです。",
-        ];
-
-        // ランダムに占い結果を選ぶ
-        const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-
-        // 4つの外部HTMLファイルのいずれかをランダムに選ぶ
-        const randomIndex = Math.floor(Math.random() * 4) + 1; // 1 から 4 の間でランダムな番号
-        const fortuneFile = `fortune${randomIndex}.html`; 
-
-        // 新しいウィンドウを開き、選ばれたファイルを表示
-        const newWindow = window.open(fortuneFile + '?fortune=' + encodeURIComponent(randomFortune), '_blank');
-    } else {
-        alert("誕生日を選択してください！");
+    if (!birthdate) {
+      alert("生年月日を入力してください！");
+      return;
     }
-}
+
+    // ファイルリスト
+    const files = ['fortune1.html', 'fortune2.html', 'fortune3.html', 'fortune4.html'];
+
+    // 誕生日に基づくロジックでファイルを選択 (例: 月 + 日の合計 % 4)
+    const date = new Date(birthdate);
+    const month = date.getMonth() + 1; // 月 (0から始まるので+1)
+    const day = date.getDate(); // 日
+    const index = (month + day) % files.length;
+
+    const selectedFile = files[index];
+
+    // 別ウィンドウで選ばれたファイルを表示
+    window.location.href = selectedFile;
+  }

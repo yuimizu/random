@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>占い</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>占い</title>
 </head>
 <body>
-    <h2>生年月日を選択してください</h2>
 
-    <label for="birthDate">生年月日：</label>
-    <input type="date" id="birthday" />
-    <br>
+  <label for="birthdate">生年月日を入力してください：</label>
+  <input type="date" id="birthdate">
+  <br>
+  <button onclick="showFortune()">START</button>
 
-    <button onclick="openFortuneWindow()">START</button>
+  <script src="random.js"></script>
 
-    <script src="random.js"></script>
 </body>
-</html>
