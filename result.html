@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>占い結果</title>
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <link rel="stylesheet" href="result.css">
 </head>
 <body>
   <h1>占い結果</h1>
@@ -39,7 +41,24 @@
         return;
       }
 
-      const items = ["A", "B", "C", "D"]; // 表示する項目
+      const items = [
+        {
+          title: "A",
+          description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet veritatis, ut laborum culpa eaque.",
+        },
+        {
+          title: "B",
+          description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet veritatis, ut laborum culpa eaque.",
+        },
+        {
+          title: "C",
+          description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet veritatis, ut laborum culpa eaque.",
+        },
+        {
+          title: "D",
+          description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet veritatis, ut laborum culpa eaque.",
+        },
+      ]; // 表示する項目
 
       // 誕生日を基にシードを生成 (年+月+日の数値)
       const seed = parseInt(birthdate.replace(/-/g, ""), 10);
@@ -49,7 +68,22 @@
       shuffledItems.forEach(item => {
         const div = document.createElement("div");
         div.className = "result-item";
-        div.textContent = item;
+
+        // タイトル
+        const headerDiv = document.createElement("div");
+        headerDiv.className = "result-header";
+        headerDiv.textContent = `${item.title}:`;
+
+        // 説明
+        const descriptionDiv = document.createElement("div");
+        descriptionDiv.className = "result-description";
+        descriptionDiv.textContent = item.description;
+
+        // 結果アイテムにタイトルと説明を追加
+        div.appendChild(headerDiv);
+        div.appendChild(descriptionDiv);
+
+        // 結果を表示
         resultsDiv.appendChild(div);
       });
     });
