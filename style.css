@@ -1,0 +1,9 @@
+body{
+    background: url(background.jpg);
+    background-size: cover;
+    color: #fff;  
+}
+
+input,button{
+    color: #fff;
+}
