@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>生年月日を選択してください</h1>
-  <label for="birthdate">生年月日：</label>
+  <h1 class="title">生年月日を選択してください</h1>
   <input type="date" id="birthdate">
-  <button onclick="goToResultPage()">START</button>
 
+  <div class="button" onclick="goToResultPage()">START</div>
+  
   <script>
     function goToResultPage() {
       const birthdate = document.getElementById('birthdate').value;
