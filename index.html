@@ -16,6 +16,15 @@
   <div class="button" onclick="goToResultPage()">START</div>
   
   <script>
+    if (!Modernizr.inputtypes.date) {
+    // もし日付入力がサポートされていない場合、カレンダーを手動で提供
+    const birthdateInput = document.getElementById('birthdate');
+    birthdateInput.type = 'text'; // フォールバック用にテキスト入力に変更
+    flatpickr(birthdateInput, {
+        dateFormat: "Y-m-d"
+    });
+}
+
     function goToResultPage() {
       const birthdate = document.getElementById('birthdate').value;
 
