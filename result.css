@@ -1,10 +1,15 @@
 body {
     vertical-align: baseline;
     font-family: 游ゴシック体, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", FontAwesome, sans-serif;
+    background: url(background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0 auto;
-    width: 380px;   
+    width: 380px;
+    color: #fff;   
 }
 
 .title{

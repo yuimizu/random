@@ -14,6 +14,47 @@ body{
     font-size: 1.5rem;
 }
 
+.fadeIn500ms {
+    animation-name: fadeIn500ms;
+    animation-delay: 500ms;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    transform: translateX(-50px);
+    opacity: 0;
+}
+
+@keyframes fadeIn500ms {
+    0% {
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.caption{
+    font-size: 1rem;
+    line-height: 2.2;
+    margin-bottom: 36px;
+}
+
+.fadeIn1s {
+    animation-name: fadeIn1s;
+    animation-delay: 1s;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    transform: translateX(-50px);
+    opacity: 0;
+}
+@keyframes fadeIn1s {
+    0% {
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 input[type="date"] {
     border: 2px solid #fff;
     border-radius: 5px;
@@ -39,4 +80,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer; 
     width: 280px
 }
+
+.fadeIn1500ms {
+    animation-name: fadeIn1500ms;
+    animation-delay: 1500ms;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    transform: translateX(-50px);
+    opacity: 0;
+}
+
+@keyframes fadeIn1500ms {
+    0% {
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 
