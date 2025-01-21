@@ -93,6 +93,11 @@ hr {
     text-align: center;
 }
 
+.flatpickr-current-month .numInputWrapper span.arrowUp,
+.flatpickr-current-month .numInputWrapper span.arrowDown {
+    display: none;
+}
+
 .button{
     margin: 0 auto;
     margin-top: 75px;
@@ -122,6 +127,9 @@ hr {
         opacity: 1;
     }
 }
+
+
+
 
 
 
