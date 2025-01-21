@@ -8,6 +8,32 @@ body{
     font-family: Georgia, 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", HGS明朝E, メイリオ, Meiryo, serif; 
 }
 
+.bi-list{
+    color: #fff;
+    font-size: 25px;
+}
+
+#offcanvasNavbar{
+    width: 280px;
+    padding: 1rem;
+}
+
+.btn-close{
+    margin: 0 0 0 auto;
+}
+
+hr {
+    margin: 1rem 0;
+    color: inherit;
+    border: 0;
+    border-top: var(--bs-border-width) solid;
+    opacity: .25;
+}
+
+.nav-item{
+    text-align: start;
+}
+
 .title{
     padding: 60px 0 0;
     margin-bottom: 60px;
