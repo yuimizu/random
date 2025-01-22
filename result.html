@@ -65,10 +65,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const flatpickr = getQueryParam("flatpickr");
+      const birthdate = getQueryParam("birthdate");
       const resultsDiv = document.getElementById("results");
 
-      if (!flatpickr) {
+      if (!birthdate) {
         resultsDiv.textContent = "生年月日が指定されていません。";
         return;
       }
@@ -101,7 +101,7 @@
       ]; // 表示する項目
 
       // 誕生日を基にシードを生成 (年+月+日の数値)
-      const seed = parseInt(flatpickr.replace(/-/g, ""), 10);
+      const seed = parseInt(birthdate.replace(/-/g, ""), 10);
       const shuffledItems = seededShuffle(items, seed);
 
       // 結果を表示

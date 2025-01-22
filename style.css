@@ -82,7 +82,22 @@ hr {
     }
 }
 
-#flatpickr{
+input[type="date"] {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: #fff;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+  }
+
+ #birthdate{
     border: 2px solid #fff;
     border-radius: 5px;
     padding: 10px;
@@ -91,11 +106,6 @@ hr {
     width: 250px;
     height: 60px;
     text-align: center;
-}
-
-.flatpickr-current-month .numInputWrapper span.arrowUp,
-.flatpickr-current-month .numInputWrapper span.arrowDown {
-    display: none;
 }
 
 .button{
