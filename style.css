@@ -92,14 +92,18 @@ input[type="text"]  {
     color: #fff;
 }
 
-  input[type="date"]::-webkit-calendar-picker-indicator {
+input[type="text"]::placeholder {
+    color: #fff;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: #fff;
     color: white;
     border-radius: 50%;
     padding: 5px;
-  }
+}
 
- #birthdate{
+.form-control{
     border: 2px solid #fff;
     border-radius: 5px;
     padding: 10px;
@@ -109,6 +113,10 @@ input[type="text"]  {
     height: 60px;
     text-align: center;
     margin: 0 auto;
+}
+
+.form-control:focus{
+    color: #fff;
 }
 
 .button{
