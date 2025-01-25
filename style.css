@@ -1,4 +1,4 @@
-body{
+body {
     text-align: center;
     background: url(background.jpg);
     background-size: cover;
@@ -8,36 +8,37 @@ body{
     font-family: Georgia, 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", HGS明朝E, メイリオ, Meiryo, serif; 
 }
 
-.bi-list{
-    color: #fff;
-    font-size: 25px;
+.navbar-toggler {
+    margin-left: auto;
 }
 
-#offcanvasNavbar{
+.bi-list {
+    color: #fff;
+    font-size: 2rem;
+}
+
+#offcanvasNavbar {
     width: 280px;
     padding: 1rem;
 }
 
-.btn-close{
+.btn-close {
     margin: 0 0 0 auto;
 }
 
-hr {
-    margin: 1rem 0;
-    color: inherit;
-    border: 0;
-    border-top: var(--bs-border-width) solid;
-    opacity: .25;
-}
-
-.nav-item{
+.nav-item {
     text-align: start;
 }
 
-.title{
-    padding: 60px 0 0;
-    margin-bottom: 60px;
-    font-size: 1.5rem;
+.nav-link {
+    color: #000;
+}
+
+.nav-link.active {
+    background-color: #0d6efd;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px; 
 }
 
 .fadeIn500ms {
@@ -58,12 +59,6 @@ hr {
     }
 }
 
-.caption{
-    font-size: 1rem;
-    line-height: 2.2;
-    margin-bottom: 36px;
-}
-
 .fadeIn1s {
     animation-name: fadeIn1s;
     animation-delay: 1s;
@@ -82,53 +77,14 @@ hr {
     }
 }
 
-input[type="date"],
-input[type="text"]  {
-    background-color: transparent !important;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-}
-
-input[type="text"]::placeholder {
-    color: #fff;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    background-color: #fff;
-    color: white;
-    border-radius: 50%;
-    padding: 5px;
-}
-
-.form-control{
-    border: 2px solid #fff;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 20px;
-    color: #fff;
-    width: 250px;
-    height: 60px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.form-control:focus{
-    color: #fff;
-}
-
 .button{
-    margin: 0 auto;
     margin-top: 75px;
     color: #fff;
     border: 1px solid #fff;
     border-radius: 6px;
     padding: 20px 30px;
     font-size: 1.4rem;
-    cursor: pointer; 
-    width: 280px
+    width: 280px;
 }
 
 .fadeIn1500ms {

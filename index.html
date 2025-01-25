@@ -12,131 +12,137 @@
 <body>
   <nav class="navbar">
     <div class="container-fluid">
-      <button class="navbar-toggler border-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" style="margin-left: auto;">
-        <i class="bi bi-list"></i>
-      </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        <hr>
-        <div class="offcanvas-body" style="padding: 0;">
-          <ul class="nav nav-pills flex-column mb-auto">
+        <button class="navbar-toggler border-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <i class="bi bi-list"></i>
+        </button>
+
+      <div class="offcanvas offcanvas-end" id="offcanvasNavbar" tabindex="-1">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="nav flex-column">
             <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                <i class="bi bi-house-door me-3"></i>Home
-              </a>
+              <a href="#" class="nav-link active"><i class="bi-house-door me-2"></i>ホーム</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link link-body-emphasis">
-                ○○
-              </a>
+              <a href="#" class="nav-link">○○</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </nav>
+  
+  <div class="container mt-5">
+    <h1 class="mb-4 fadeIn500ms">Fortune Telling</h1>
+    <p class="fadeIn1s">今あなたが必要とする石を<br>導き出す特別な占いです。</p>
 
-  <h1 class="title fadeIn500ms">Fortune Telling</h1>
+    <div class="profile fadeIn1s">
+      <p>あなたについて教えてください。</p>
 
-  <div id="caption" class="caption fadeIn1s"></div>
+      <!-- お名前入力フィールド -->
+      <div class="mb-4">
+        <label for="name" class="form-label">お名前</label>
+        <input type="text" id="name" class="form-control">
+      </div>
 
-  <!-- 生年月日を選択または入力するメッセージ -->
-  <p id="birthdateMessage" class="caption fadeIn1s"></p>
+      <!-- 生年月日を選択するフィールド -->
+      <div class="mb-4">
+        <label for="year" class="form-label">生年月日</label>
+        <div class="d-flex gap-2">
+          <select id="year" class="form-select">
+            <option value="">年</option>
+            <!-- JavaScriptで動的に追加 -->
+          </select>
+          <select id="month" class="form-select">
+            <option value="">月</option>
+            <!-- JavaScriptで動的に追加 -->
+          </select>
+          <select id="day" class="form-select">
+            <option value="">日</option>
+            <!-- JavaScriptで動的に追加 -->
+          </select>
+        </div>
+      </div>
+    </div>
 
-  <!-- 日付選択フィールド（デフォルト表示） -->
-  <input type="date" id="birthdatePicker" class="form-control mb-3">
-
-  <!-- 手動入力フィールド（アンドロイド端末用、デフォルト非表示） -->
-  <input type="text" id="manualBirthdate" class="form-control mb-3" placeholder="YYYY/MM/DD" style="display: none;"  maxlength="10" oninput="formatDateInput(event)">
+    <!-- STARTボタン -->
+    <button class="button fadeIn1500ms" onclick="goToResultPage()">START</button>
+  </div>
 
   <script>
-    function formatDateInput(event) {
-      const input = event.target;
-      const value = input.value.replace(/[^0-9]/g, ''); // 数字以外を除去
-      let formatted = '';
+    // 年、月、日を動的に生成
+    const yearSelect = document.getElementById("year");
+    const monthSelect = document.getElementById("month");
+    const daySelect = document.getElementById("day");
 
-      // 年(4桁)、月(2桁)、日(2桁)をフォーマット
-      if (value.length <= 4) {
-        formatted = value;
-      } else if (value.length <= 6) {
-        formatted = `${value.slice(0, 4)}/${value.slice(4)}`;
-      } else {
-        formatted = `${value.slice(0, 4)}/${value.slice(4, 6)}/${value.slice(6, 8)}`;
-      }
+    const currentYear = new Date().getFullYear();
 
-      input.value = formatted; // フォーマット済みの値を入力欄に設定
+    // 年を1900年から現在まで追加
+    for (let year = currentYear; year >= 1900; year--) {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      yearSelect.appendChild(option);
     }
-  </script>
 
-  <div class="button fadeIn1500ms" onclick="goToResultPage()">START</div>
+    // 月を1から12まで追加
+    for (let month = 1; month <= 12; month++) {
+      const option = document.createElement("option");
+      option.value = month;
+      option.textContent = month;
+      monthSelect.appendChild(option);
+    }
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    // 日を追加する関数（選択された年と月に応じて）
+    function populateDays() {
+      daySelect.innerHTML = '<option value="">日</option>'; // 初期化
+      const year = parseInt(yearSelect.value, 10);
+      const month = parseInt(monthSelect.value, 10);
 
-  <script>
-    function goToResultPage() {
-      const birthdatePicker = document.getElementById('birthdatePicker');
-      const manualBirthdate = document.getElementById('manualBirthdate');
-
-      let birthdate = '';
-
-      if (/Android/i.test(navigator.userAgent)) {
-        // アンドロイドの場合、手動入力を取得
-        birthdate = manualBirthdate.value.trim();
-      } else {
-        // それ以外は選択式の値を取得
-        birthdate = birthdatePicker.value;
+      if (!isNaN(year) && !isNaN(month)) {
+        const daysInMonth = new Date(year, month, 0).getDate(); // 月末の日を取得
+        for (let day = 1; day <= daysInMonth; day++) {
+          const option = document.createElement("option");
+          option.value = day;
+          option.textContent = day;
+          daySelect.appendChild(option);
+        }
       }
+    }
 
-      if (!birthdate) {
-        alert("生年月日を入力してください！");
+    // イベントリスナーで日を更新
+    yearSelect.addEventListener("change", populateDays);
+    monthSelect.addEventListener("change", populateDays);
+
+    // 結果ページへの遷移処理
+    function goToResultPage() {
+      const name = document.getElementById("name").value.trim();
+      const year = yearSelect.value;
+      const month = monthSelect.value;
+      const day = daySelect.value;
+
+      // お名前と生年月日の入力チェック
+      if (!name) {
+        alert("お名前を入力してください！");
+        return;
+      }
+      if (!year || !month || !day) {
+        alert("生年月日を正しく選択してください！");
         return;
       }
 
-      // 生年月日の形式を確認
-      if (/Android/i.test(navigator.userAgent)) {
-        const datePattern = /^\d{4}\/\d{2}\/\d{2}$/; // yyyy/mm/dd の形式
-        if (!datePattern.test(birthdate)) {
-          alert("生年月日は「YYYY/MM/DD」の形式で入力してください！");
-          return;
-        }
-
-        // 正しい日付かどうか確認
-        const [year, month, day] = birthdate.split("/").map(Number);
-        const date = new Date(year, month - 1, day);
-        if (
-          date.getFullYear() !== year ||
-          date.getMonth() + 1 !== month ||
-          date.getDate() !== day
-        ) {
-          alert("有効な日付を入力してください！");
-          return;
-        }
-      }
-
-      // 結果ページに遷移し、生年月日をクエリパラメータとして渡す
+      const birthdate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
       const targetPage = "result.html";
-      window.location.href = `${targetPage}?birthdate=${encodeURIComponent(birthdate)}`;
+
+      // 結果ページにクエリパラメータとしてお名前と生年月日を渡す
+      const query = `name=${encodeURIComponent(name)}&birthdate=${encodeURIComponent(birthdate)}`;
+      window.location.href = `${targetPage}?${query}`;
     }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const birthdateMessage = document.getElementById('birthdateMessage');
-      const birthdatePicker = document.getElementById('birthdatePicker');
-      const manualBirthdate = document.getElementById('manualBirthdate');
-
-      // ユーザーエージェントでデバイスを判定
-      if (/Android/i.test(navigator.userAgent)) {
-        // アンドロイドの場合
-        birthdateMessage.innerHTML = "今あなたが必要とする石を、<br>導き出す特別な占いです。<br>生年月日を入力してください。";
-        birthdatePicker.style.display = "none"; // 選択式を非表示
-        manualBirthdate.style.display = "block"; // 手動入力を表示
-      } else {
-        // それ以外のデバイス
-        birthdateMessage.innerHTML = "今あなたが必要とする石を、<br>導き出す特別な占いです。<br>生年月日を選択してください。";
-        birthdatePicker.style.display = "block"; // 選択式を表示
-        manualBirthdate.style.display = "none"; // 手動入力を非表示
-      }
-    });
-
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+  </script>
+
 </body>
 </html>
