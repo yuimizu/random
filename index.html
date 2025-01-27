@@ -42,106 +42,87 @@
       <p>あなたについて教えてください。</p>
 
       <!-- お名前入力フィールド -->
-      <div class="mb-4">
-        <label for="name" class="form-label">お名前</label>
-        <input type="text" id="name" class="form-control">
-      </div>
+      <p class="caption fadeIn1s">お名前を入力してください。</p>
+      <input type="text" id="nameInput" class="form-control mb-3" placeholder="お名前">
 
-      <!-- 生年月日を選択するフィールド -->
-      <div class="mb-4">
-        <label for="year" class="form-label">生年月日</label>
-        <div class="d-flex gap-2">
-          <select id="year" class="form-select">
-            <option value="">年</option>
-            <!-- JavaScriptで動的に追加 -->
-          </select>
-          <select id="month" class="form-select">
-            <option value="">月</option>
-            <!-- JavaScriptで動的に追加 -->
-          </select>
-          <select id="day" class="form-select">
-            <option value="">日</option>
-            <!-- JavaScriptで動的に追加 -->
-          </select>
-        </div>
+      <!-- 生年月日選択フィールド -->
+      <p class="caption fadeIn1s">生年月日を選択してください。</p>
+
+      <div class="d-flex gap-2 mb-3">
+        <!-- 年の選択 -->
+        <select id="yearSelect" class="form-select">
+          <option value="">年</option>
+        </select>
+        <!-- 月の選択 -->
+        <select id="monthSelect" class="form-select">
+          <option value="">月</option>
+        </select>
+        <!-- 日の選択 -->
+        <select id="daySelect" class="form-select">
+          <option value="">日</option>
+        </select>
       </div>
     </div>
-
-    <!-- STARTボタン -->
+    
     <button class="button fadeIn1500ms" onclick="goToResultPage()">START</button>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
   <script>
-    // 年、月、日を動的に生成
-    const yearSelect = document.getElementById("year");
-    const monthSelect = document.getElementById("month");
-    const daySelect = document.getElementById("day");
+    document.addEventListener("DOMContentLoaded", () => {
+      const yearSelect = document.getElementById("yearSelect");
+      const monthSelect = document.getElementById("monthSelect");
+      const daySelect = document.getElementById("daySelect");
 
-    const currentYear = new Date().getFullYear();
-
-    // 年を1900年から現在まで追加
-    for (let year = currentYear; year >= 1900; year--) {
-      const option = document.createElement("option");
-      option.value = year;
-      option.textContent = year;
-      yearSelect.appendChild(option);
-    }
-
-    // 月を1から12まで追加
-    for (let month = 1; month <= 12; month++) {
-      const option = document.createElement("option");
-      option.value = month;
-      option.textContent = month;
-      monthSelect.appendChild(option);
-    }
-
-    // 日を追加する関数（選択された年と月に応じて）
-    function populateDays() {
-      daySelect.innerHTML = '<option value="">日</option>'; // 初期化
-      const year = parseInt(yearSelect.value, 10);
-      const month = parseInt(monthSelect.value, 10);
-
-      if (!isNaN(year) && !isNaN(month)) {
-        const daysInMonth = new Date(year, month, 0).getDate(); // 月末の日を取得
-        for (let day = 1; day <= daysInMonth; day++) {
-          const option = document.createElement("option");
-          option.value = day;
-          option.textContent = day;
-          daySelect.appendChild(option);
-        }
+      // 年を生成 (1940年～現在の年)
+      const currentYear = new Date().getFullYear();
+      for (let year = 1940; year <= currentYear; year++) {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
       }
-    }
 
-    // イベントリスナーで日を更新
-    yearSelect.addEventListener("change", populateDays);
-    monthSelect.addEventListener("change", populateDays);
+      // 月を固定で生成 (1～12)
+      for (let month = 1; month <= 12; month++) {
+        const option = document.createElement("option");
+        option.value = month;
+        option.textContent = month;
+        monthSelect.appendChild(option);
+      }
 
-    // 結果ページへの遷移処理
+      // 日を固定で生成 (1～31)
+      for (let day = 1; day <= 31; day++) {
+        const option = document.createElement("option");
+        option.value = day;
+        option.textContent = day;
+        daySelect.appendChild(option);
+      }
+    });
+
     function goToResultPage() {
-      const name = document.getElementById("name").value.trim();
-      const year = yearSelect.value;
-      const month = monthSelect.value;
-      const day = daySelect.value;
+      const nameInput = document.getElementById("nameInput").value.trim();
+      const year = document.getElementById("yearSelect").value;
+      const month = document.getElementById("monthSelect").value;
+      const day = document.getElementById("daySelect").value;
 
-      // お名前と生年月日の入力チェック
-      if (!name) {
+      if (!nameInput) {
         alert("お名前を入力してください！");
         return;
       }
+
       if (!year || !month || !day) {
         alert("生年月日を正しく選択してください！");
         return;
       }
 
-      const birthdate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-      const targetPage = "result.html";
+      const birthdate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
 
-      // 結果ページにクエリパラメータとしてお名前と生年月日を渡す
-      const query = `name=${encodeURIComponent(name)}&birthdate=${encodeURIComponent(birthdate)}`;
-      window.location.href = `${targetPage}?${query}`;
+      // 結果ページに遷移し、名前と生年月日をクエリパラメータとして渡す
+      const targetPage = "result.html";
+      window.location.href = `${targetPage}?name=${encodeURIComponent(nameInput)}&birthdate=${encodeURIComponent(birthdate)}`;
     }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
   </script>
 
 </body>
