@@ -1,5 +1,9 @@
 #results{
-    text-align: center;
+    color: #ffffff;
+}
+
+#title{
+    margin-bottom: 20px;
 }
 
 .result-header {
@@ -9,7 +13,9 @@
     border-bottom: solid 3px #ffffff;
 }
 
-.result-description {
+#result-description {
     padding: 0px 10px;
     line-height: 1.8;
+    text-align: start;
 }
+
