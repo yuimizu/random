@@ -5,7 +5,7 @@ body {
     background-repeat: no-repeat;
     height: 100vh;
     color: #fff; 
-    font-family: Georgia, 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", HGS明朝E, メイリオ, Meiryo, serif; 
+    font-family: 'Arial', sans-serif; 
 }
 
 .navbar-toggler {
@@ -39,6 +39,10 @@ body {
     color: #fff;
     font-weight: bold;
     border-radius: 5px; 
+}
+
+.en{
+    font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 .fadeIn500ms {

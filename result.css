@@ -13,7 +13,7 @@
     border-bottom: solid 3px #ffffff;
 }
 
-#result-description {
+.description {
     padding: 0px 10px;
     line-height: 1.8;
     text-align: start;
