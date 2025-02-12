@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 性格番号を取得
   const resultNumber = getResultNumber(month, day);
 
-  // 天珠3を取得
-  const tenju3 = getTenju3(month, day);
+  
   
   if (resultNumber === 0) {
     document.getElementById("personality-header").textContent = "無効な日付です。";
@@ -39,16 +38,40 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("tenju-1-header").textContent = `${resultNumber}眼天珠`;
     document.getElementById("tenju-1-description").textContent = getTenjuDescription(resultNumber);
 
-    // 生年から干支を取得
-    const zodiac = getZodiac(year);
-    // 天珠2の説明を表示
-    document.getElementById("tenju-2-header").textContent = `${zodiac}`;
-    document.getElementById("tenju-2-description").textContent = getTenju2Description(zodiac);
+    //天珠2の言葉を取得・表示
+    const tenju2Result = getTenju2(year);
+    if (tenju2Result) {
+        document.getElementById("tenju-2-header").innerText = tenju2Result.name;
+        document.getElementById("tenju-2-description").innerText = tenju2Result.description;
+    }
 
-    // 天珠3の説明を表示
-    document.getElementById("tenju-3-header").textContent = `${tenju3}`;
-    document.getElementById("tenju-3-description").textContent = getTenju3Description(tenju3);
+    //天珠3の説明を取得・表示
+    const tenju3Result = getTenju3(month, day);
+    if (tenju3Result) {
+      document.getElementById("tenju-3-header").innerText = tenju3Result.name;
+      document.getElementById("tenju-3-description").innerText = tenju3Result.description;
+    }
 
+    //天珠4の説明を取得・表示
+    const tenju4Result = getTenju4(month, day);
+    if (tenju4Result) {
+      document.getElementById("tenju-4-header").innerText = tenju4Result.name;
+      document.getElementById("tenju-4-description").innerText = tenju4Result.description;
+    }
+
+    //天珠5の言葉を取得・表示
+    const tenju5Result = getTenju5(year);
+    if (tenju5Result) {
+        document.getElementById("tenju-5-header").innerText = tenju5Result.name;
+        document.getElementById("tenju-5-description").innerText = tenju5Result.description;
+    }
+
+    //天珠6の言葉を取得・表示
+    const tenju6Result = getTenju6(month, day);
+    if (tenju6Result) {
+        document.getElementById("tenju-6-header").innerText = tenju6Result.name;
+        document.getElementById("tenju-6-description").innerText = tenju6Result.description;
+    }
   }
   
 });
