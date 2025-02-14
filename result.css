@@ -18,7 +18,10 @@
     padding: 0px 10px;
     line-height: 1.8;
     text-align: start;
-    margin-bottom: 30px;
+}
+
+section .description{
+    margin-bottom: 3rem;
 }
 
 p {
