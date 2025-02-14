@@ -45,36 +45,30 @@
         <div id="personality-description" class="description"></div> 
       </div>
 
-      <section>
-        <p class="mt-5">あなたにおすすめの天珠は…</p>
-        <div id="tenju-1">
-          <div id="tenju-1-header" class="result-header"></div>
-          <div id="tenju-1-description" class="description"></div> 
-        </div>
-        <div id="tenju-2">
-          <div id="tenju-2-header" class="result-header"></div>
-          <div id="tenju-2-description" class="description"></div> 
-        </div>
-        <div id="tenju-3">
-          <div id="tenju-3-header" class="result-header"></div>
-          <div id="tenju-3-description" class="description"></div> 
-        </div>
-        <div id="tenju-4">
-          <div id="tenju-4-header" class="result-header"></div>
-          <div id="tenju-4-description" class="description"></div> 
-        </div>
-        <div id="tenju-5">
-          <div id="tenju-5-header" class="result-header"></div>
-          <div id="tenju-5-description" class="description"></div> 
-        </div>
-        <div id="tenju-6">
-          <div id="tenju-6-header" class="result-header"></div>
-          <div id="tenju-6-description" class="description"></div> 
-        </div>
-
-
-
-
+      <p class="mt-5">あなたにおすすめの天珠は…</p>
+      <section id="tenju-1">
+        <div id="tenju-1-header" class="result-header"></div>
+        <div id="tenju-1-description" class="description"></div> 
+      </section>
+      <section  id="tenju-2">
+        <div id="tenju-2-header" class="result-header"></div>
+        <div id="tenju-2-description" class="description"></div> 
+      </section >
+      <section  id="tenju-3">
+        <div id="tenju-3-header" class="result-header"></div>
+        <div id="tenju-3-description" class="description"></div> 
+      </section >
+      <section  id="tenju-4">
+        <div id="tenju-4-header" class="result-header"></div>
+        <div id="tenju-4-description" class="description"></div> 
+      </section >
+      <section  id="tenju-5">
+        <div id="tenju-5-header" class="result-header"></div>
+        <div id="tenju-5-description" class="description"></div> 
+      </section >
+      <section id="tenju-6">
+        <div id="tenju-6-header" class="result-header"></div>
+        <div id="tenju-6-description" class="description"></div> 
       </section>
     </div>
 
@@ -82,9 +76,26 @@
   
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          const container = document.querySelector("div.container"); 
+          const elements = Array.from(document.querySelectorAll("section[id^='tenju-']")); // 各天珠のセクションを取得
     
-
+          // Fisher-Yatesアルゴリズムでシャッフル
+          function shuffleArray(array) {
+              for (let i = array.length - 1; i > 0; i--) {
+                  const j = Math.floor(Math.random() * (i + 1));
+                  [array[i], array[j]] = [array[j], array[i]]; // 配列内の要素を交換
+              }
+          }
     
+          // 配列をシャッフル
+          shuffleArray(elements);
+    
+          // シャッフルした順番で要素を再配置
+          elements.forEach(el => container.appendChild(el));
+      });
+    </script>
 </body>
 </html>
 
