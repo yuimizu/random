@@ -63,16 +63,16 @@ body {
     }
 }
 
-.fadeIn1s {
-    animation-name: fadeIn1s;
-    animation-delay: 1s;
+.fadeIn1500ms {
+    animation-name: fadeIn1500ms;
+    animation-delay: 1500ms;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
     transform: translateX(-50px);
     opacity: 0;
 }
 
-@keyframes fadeIn1s {
+@keyframes fadeIn1500ms {
     0% {
     }
     100% {
@@ -91,16 +91,16 @@ body {
     width: 280px;
 }
 
-.fadeIn1500ms {
-    animation-name: fadeIn1500ms;
-    animation-delay: 1500ms;
+.fadeIn2500ms {
+    animation-name: fadeIn2500ms;
+    animation-delay: 2500ms;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
     transform: translateX(-50px);
     opacity: 0;
 }
 
-@keyframes fadeIn1500ms {
+@keyframes fadeIn2500ms {
     0% {
     }
     100% {
