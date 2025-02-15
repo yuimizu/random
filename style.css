@@ -5,7 +5,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: #fff; 
-    font-family: 'Arial', sans-serif; 
+    font-family: Georgia, 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", HGS明朝E, メイリオ, Meiryo, serif;
 }
 
 .navbar-toggler {
@@ -41,16 +41,12 @@ body {
     border-radius: 5px; 
 }
 
-.en{
-    font-family: 'Georgia', 'Times New Roman', serif;
-}
-
 .fadeIn500ms {
     animation-name: fadeIn500ms;
     animation-delay: 500ms;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
-    transform: translateX(-50px);
+    transform: translateY(-50px);
     opacity: 0;
 }
 
@@ -58,7 +54,7 @@ body {
     0% {
     }
     100% {
-        transform: translateX(0);
+        transform: translateY(0);
         opacity: 1;
     }
 }
@@ -68,7 +64,7 @@ body {
     animation-delay: 1500ms;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
-    transform: translateX(-50px);
+    transform: translateY(-50px);
     opacity: 0;
 }
 
@@ -96,7 +92,7 @@ body {
     animation-delay: 2500ms;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
-    transform: translateX(-50px);
+    transform: translateY(-50px);
     opacity: 0;
 }
 
@@ -109,6 +105,9 @@ body {
     }
 }
 
+#yearSelect, #monthSelect, #daySelect {
+    font-family: 'Arial', sans-serif;
+}
 
 
 
