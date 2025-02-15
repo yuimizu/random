@@ -55,6 +55,12 @@ section {
     text-align: start;
 }
 
+@media (max-width: 767px) {
+    .description {
+        padding: 15px 20px;
+    }
+}
+
 p {
     font-size: 2rem;
 }
