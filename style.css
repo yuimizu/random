@@ -41,6 +41,28 @@ body {
     border-radius: 5px; 
 }
 
+.sns-link {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.sns-link i {
+    font-size: 22px; 
+}
+
+.bi-instagram {
+    color: #E4405F;
+}
+
+.bi-twitter-x {
+    color: #000; 
+}
+
+.bi-line {
+    color: #06C755;
+}
+
 .fadeIn500ms {
     animation-name: fadeIn500ms;
     animation-delay: 500ms;
@@ -105,7 +127,7 @@ body {
     }
 }
 
-#yearSelect, #monthSelect, #daySelect {
+#yearSelect, #monthSelect, #daySelect, .nav-item {
     font-family: 'Arial', sans-serif;
 }
 
