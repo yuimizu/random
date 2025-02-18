@@ -26,29 +26,26 @@ body {
     padding: 4px;
     border:  5px double #a9a9a9;
     background: #F8F8F8;
+    border-radius: 20px;
 }
 
 #personality-header {
     margin-top: 5px;
 }
 
-section {
+#accordionExample {
     max-width: 990px;
-    margin: 0 auto 30px;
-    padding: 15px;
-    background: #F8F8F8;
+    margin: 0 auto;
+
 }
 
 .result-header {
     color: #7da5ba;;
-    margin: 0 auto;
-    line-height: 26px;
-    padding: 0px 15px 5px;
-    border-bottom: 1px solid #dcdcdc;
+    text-align: center;
     font-size: 1.5rem;
 }
 
-.description {
+#personality-description,.accordion-body {
     padding: 30px 50px;
     line-height: 1.8;
     color: #000;
