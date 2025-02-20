@@ -8,6 +8,10 @@ body {
     font-family: Georgia, 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", HGS明朝E, メイリオ, Meiryo, serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .navbar-toggler {
     margin-left: auto;
 }

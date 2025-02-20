@@ -17,7 +17,11 @@ body {
 }
 
 #title{
-    margin-bottom: 20px;
+    background-color: #d4af37;
+    width: 60%;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 #personality {
@@ -33,10 +37,20 @@ body {
     margin-top: 5px;
 }
 
+.heading {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #d4af37; 
+    padding: 20px; 
+    border-radius: 10px; 
+    backdrop-filter: blur(5px); 
+    width: 60%;
+    margin: 20px auto; 
+}
+
 #accordionExample {
     max-width: 990px;
     margin: 0 auto;
-
 }
 
 .result-header {
@@ -58,8 +72,19 @@ body {
     }
 }
 
-p {
-    font-size: 2rem;
+.result-item {
+    padding: 30px 50px;
+    line-height: 1.8;
+    color: #000;
+    text-align: start;
+    background-color: #F8F8F8;
+    max-width: 990px;
+    margin: 0 auto 16px;
 }
 
-
+.result-item strong {
+    display: block;
+    color: #7da5ba;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
