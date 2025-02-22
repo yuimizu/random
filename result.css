@@ -72,6 +72,34 @@ body {
     }
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tenju-image {
+    width: 50px;  /* 画像のサイズを適切に設定 */
+    height: 50px;
+    margin-left: 10px;  /* 名前と画像の間隔を調整 */
+  }
+  
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 名前とサブタイトルの位置を垂直方向に中央揃え */
+  }
+  
+  
+  /* サブタイトル */
+  .custom-subtitle {
+    font-size: 0.9em;
+    color: gray;
+    margin-top: 2px;
+  }
+  
+
+
+
 .result-item {
     padding: 30px 50px;
     line-height: 1.8;

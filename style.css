@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background: url(background.jpg);
+    background: url(img/background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -131,11 +131,6 @@ a {
     }
 }
 
-#yearSelect, #monthSelect, #daySelect, .nav-item {
+#nameInput, #yearSelect, #monthSelect, #daySelect, .nav-item {
     font-family: 'Arial', sans-serif;
 }
-
-
-
-
-
