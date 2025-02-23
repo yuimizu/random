@@ -53,6 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
     "万字天珠（卍天珠）": "- 幸運、繁栄、平穏をもたらす -",
     "蓮師法器天珠": "- 強力な守護力と知恵を授かる -",
     "法相仏眼天珠": "- 無病息災や幸福成就のご利益 -",
+    "宝瓶天珠": "- 豊穣と恩恵をもたらす命の壺 -",
+    "山形天珠": "- 困難を乗り越え、運気を上昇させる -",
+    "虎牙天珠": "- 勇猛果敢な力と勝負運を授ける -",
+    "蓮華天珠": "- 浄化の作用が優れている -",
+    "龍眼天珠": "- 威厳と守護の力を宿す -",
+    "白蛇天珠": "- 財福の神である弁財天の使い -",
+    "金剛杵天珠": "- 邪気や災いを断ち切る力 -",
+    "流水紋天珠（水紋天珠）": "- 絶え間なく流れる財運と浄化の力 -",
+    "蓮師法帽天珠": "- 知恵と名声を授ける蓮師の加護 -",
+    "大鵬鳥天珠": "- 災厄を払い幸福へ導く天空の守護者 -",
+    "日月星天珠": "- 天体のエネルギーを宿し、幸運を呼ぶ -",
+    "天地天珠": "- 「天と地」の力が融合した神聖なもの -",
   };
 
   // 各天珠の写真
@@ -141,110 +153,108 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
- * 天珠のヘッダー部分とリスト部分を更新する関数
- * @param {string} id - 天珠のID (tenju-1 〜 tenju-6)
- * @param {string} name - 天珠の名前
- * @param {string} description - 天珠の説明
- */
-function updateTenjuSection(id, name, description) {
-  const headerElement = document.getElementById(`${id}-header`);
-  const descriptionElement = document.getElementById(`${id}-description`);
+  * 天珠のヘッダー部分とリスト部分を更新する関数
+  * @param {string} id - 天珠のID (tenju-1 〜 tenju-6)
+  * @param {string} name - 天珠の名前
+  * @param {string} description - 天珠の説明
+  */
+  function updateTenjuSection(id, name, description) {
+    const headerElement = document.getElementById(`${id}-header`);
+    const descriptionElement = document.getElementById(`${id}-description`);
 
-  // 画像を取得
-  const imageSrc = tenjuImages[name];
+    // 画像を取得
+    const imageSrc = tenjuImages[name];
 
-  // ヘッダーを更新（名前 + サブタイトル）
-  const headerContainer = document.createElement("div");
-  headerContainer.classList.add("header-container");
+    // ヘッダーを更新（名前 + サブタイトル）
+    const headerContainer = document.createElement("div");
+    headerContainer.classList.add("header-container");
 
-  // 名前を追加
-  const nameElement = document.createElement("span");
-  nameElement.classList.add("result-header");
-  nameElement.innerHTML = `<strong>${name}</strong>`;
-  headerContainer.appendChild(nameElement);
+    // 名前を追加
+    const nameElement = document.createElement("span");
+    nameElement.classList.add("result-header");
+    nameElement.innerHTML = `<strong>${name}</strong>`;
+    headerContainer.appendChild(nameElement);
 
-  // サブタイトルを追加
-  const subtitleText = subtitles[name] || "";
-  if (subtitleText) {
-    const subtitleElement = document.createElement("div");
-    subtitleElement.className = "custom-subtitle";
-    subtitleElement.innerText = subtitleText;
-    headerContainer.appendChild(subtitleElement);
+    // サブタイトルを追加
+    const subtitleText = subtitles[name] || "";
+    if (subtitleText) {
+      const subtitleElement = document.createElement("div");
+      subtitleElement.className = "custom-subtitle";
+      subtitleElement.innerText = subtitleText;
+      headerContainer.appendChild(subtitleElement);
+    }
+
+    // ヘッダーを更新
+    headerElement.innerHTML = "";
+    headerElement.appendChild(headerContainer);
+
+    // 説明文を更新（画像を先頭に追加）
+    descriptionElement.innerHTML = ""; // 既存の説明をクリア
+
+    if (imageSrc) {
+      const imageElement = document.createElement("img");
+      imageElement.src = imageSrc;
+      imageElement.alt = name;
+      imageElement.className = "tenju-image-body"; // 新しいクラスを設定
+      descriptionElement.appendChild(imageElement);
+    }
+
+    // 説明文を追加（画像の下に来るようにする）
+    descriptionElement.innerHTML += formatTextForHTML(description);
+
+    // 天珠リストに追加
+    addToTenjuList(name, description, imageSrc);
   }
 
-  // ヘッダーを更新
-  headerElement.innerHTML = "";
-  headerElement.appendChild(headerContainer);
+  /**
+   * 天珠の情報を tenju-list に追加する関数（サブタイトルも追加）
+   * @param {string} name 天珠の名前
+   * @param {string} description 天珠の説明
+   * @param {string} imageSrc 天珠の画像URL
+   */
+  function addToTenjuList(name, description, imageSrc) {
+    const tenjuList = document.querySelector('.tenju-list');
+    const listItem = document.createElement('div');
+    listItem.classList.add('result-item');
 
-  // 説明文を更新（画像を先頭に追加）
-  descriptionElement.innerHTML = ""; // 既存の説明をクリア
+    // ヘッダーコンテナ（名前 + サブタイトル）
+    const headerContainer = document.createElement("div");
+    headerContainer.classList.add("header-container");
 
-  if (imageSrc) {
-    const imageElement = document.createElement("img");
-    imageElement.src = imageSrc;
-    imageElement.alt = name;
-    imageElement.className = "tenju-image-body"; // 新しいクラスを設定
-    descriptionElement.appendChild(imageElement);
+    // 名前を追加
+    const nameElement = document.createElement('div');
+    nameElement.classList.add("result-header");
+    nameElement.innerHTML = `<strong>${name}</strong>`;
+    headerContainer.appendChild(nameElement);
+
+    // サブタイトルを追加（もし該当するものがあれば）
+    const subtitleText = subtitles[name] || "";
+    if (subtitleText) {
+      const subtitleElement = document.createElement("div");
+      subtitleElement.className = "custom-subtitle";
+      subtitleElement.innerText = subtitleText;
+      headerContainer.appendChild(subtitleElement);
+    }
+
+    listItem.appendChild(headerContainer);
+
+    // 説明文を追加（画像を先頭に配置）
+    const descriptionElement = document.createElement('div');
+    descriptionElement.classList.add('tenju-description');
+
+    if (imageSrc) {
+      const imageElement = document.createElement("img");
+      imageElement.src = imageSrc;
+      imageElement.alt = name;
+      imageElement.className = "tenju-image-body";
+      descriptionElement.appendChild(imageElement);
+    }
+
+    // 画像の下に説明文が来るようにする
+    descriptionElement.innerHTML += formatTextForHTML(description);
+    listItem.appendChild(descriptionElement);
+
+    // リストに追加
+    tenjuList.appendChild(listItem);
   }
-
-  // 説明文を追加（画像の下に来るようにする）
-  descriptionElement.innerHTML += formatTextForHTML(description);
-
-  // 天珠リストに追加
-  addToTenjuList(name, description, imageSrc);
-}
-
-/**
- * 天珠の情報を tenju-list に追加する関数（サブタイトルも追加）
- * @param {string} name 天珠の名前
- * @param {string} description 天珠の説明
- * @param {string} imageSrc 天珠の画像URL
- */
-function addToTenjuList(name, description, imageSrc) {
-  const tenjuList = document.querySelector('.tenju-list');
-  const listItem = document.createElement('div');
-  listItem.classList.add('result-item');
-
-  // ヘッダーコンテナ（名前 + サブタイトル）
-  const headerContainer = document.createElement("div");
-  headerContainer.classList.add("header-container");
-
-  // 名前を追加
-  const nameElement = document.createElement('div');
-  nameElement.classList.add("result-header");
-  nameElement.innerHTML = `<strong>${name}</strong>`;
-  headerContainer.appendChild(nameElement);
-
-  // サブタイトルを追加（もし該当するものがあれば）
-  const subtitleText = subtitles[name] || "";
-  if (subtitleText) {
-    const subtitleElement = document.createElement("div");
-    subtitleElement.className = "custom-subtitle";
-    subtitleElement.innerText = subtitleText;
-    headerContainer.appendChild(subtitleElement);
-  }
-
-  listItem.appendChild(headerContainer);
-
-  // 説明文を追加（画像を先頭に配置）
-  const descriptionElement = document.createElement('div');
-  descriptionElement.classList.add('tenju-description');
-
-  if (imageSrc) {
-    const imageElement = document.createElement("img");
-    imageElement.src = imageSrc;
-    imageElement.alt = name;
-    imageElement.className = "tenju-image-body";
-    descriptionElement.appendChild(imageElement);
-  }
-
-  // 画像の下に説明文が来るようにする
-  descriptionElement.innerHTML += formatTextForHTML(description);
-  listItem.appendChild(descriptionElement);
-
-  // リストに追加
-  tenjuList.appendChild(listItem);
-}
-
-
 });
