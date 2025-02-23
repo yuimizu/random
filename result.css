@@ -60,6 +60,7 @@ body {
 }
 
 #personality-description,.accordion-body {
+    display: flex;
     padding: 30px 50px;
     line-height: 1.8;
     color: #000;
@@ -67,38 +68,45 @@ body {
 }
 
 @media (max-width: 767px) {
-    .description {
+    #personality-description,.accordion-body {
+        flex-direction: column;
         padding: 15px 20px;
+    }
+
+    .accordion-body img,.tenju-description img{
+        margin: 0 auto 20px;   
+    }
+    
+    .tenju-description{
+        flex-direction: column;
     }
 }
 
 .header-container {
     display: flex;
-    align-items: center;
-  }
-  
-  .tenju-image {
-    width: 50px;  /* 画像のサイズを適切に設定 */
-    height: 50px;
-    margin-left: 10px;  /* 名前と画像の間隔を調整 */
-  }
-  
-  .text-container {
-    display: flex;
     flex-direction: column;
-    justify-content: center; /* 名前とサブタイトルの位置を垂直方向に中央揃え */
-  }
+    align-items: flex-start;
+}
   
+.tenju-description {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tenju-image-body {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
   
-  /* サブタイトル */
-  .custom-subtitle {
-    font-size: 0.9em;
+.custom-subtitle {
+    font-size: 1rem;
     color: gray;
     margin-top: 2px;
-  }
-  
-
-
+}
 
 .result-item {
     padding: 30px 50px;

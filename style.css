@@ -1,9 +1,7 @@
 body {
     text-align: center;
-    background: url(img/background.jpg);
+    background: url(img/background.jpg) no-repeat center fixed;
     background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     color: #fff; 
     font-family: Georgia, 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", HGS明朝E, メイリオ, Meiryo, serif;
 }
