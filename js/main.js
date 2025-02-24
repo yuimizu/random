@@ -163,98 +163,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const descriptionElement = document.getElementById(`${id}-description`);
 
     // 画像を取得
-    const imageSrc = tenjuImages[name];
+    const imageSrc = tenjuImages[name] || "";
 
     // ヘッダーを更新（名前 + サブタイトル）
-    const headerContainer = document.createElement("div");
-    headerContainer.classList.add("header-container");
-
-    // 名前を追加
-    const nameElement = document.createElement("span");
-    nameElement.classList.add("result-header");
-    nameElement.innerHTML = `<strong>${name}</strong>`;
-    headerContainer.appendChild(nameElement);
-
-    // サブタイトルを追加
     const subtitleText = subtitles[name] || "";
-    if (subtitleText) {
-      const subtitleElement = document.createElement("div");
-      subtitleElement.className = "custom-subtitle";
-      subtitleElement.innerText = subtitleText;
-      headerContainer.appendChild(subtitleElement);
-    }
+    headerElement.innerHTML = `<strong class="tenju-name">${name}</strong><div class="custom-subtitle">${subtitleText}</div>`;
+    
 
-    // ヘッダーを更新
-    headerElement.innerHTML = "";
-    headerElement.appendChild(headerContainer);
+     // 説明文を更新（画像 + テキスト）
+     descriptionElement.innerHTML = imageSrc
+     ? `<img src="${imageSrc}" alt="${name}" class="tenju-image-body">${formatTextForHTML(description)}`
+     : formatTextForHTML(description);
 
-    // 説明文を更新（画像を先頭に追加）
-    descriptionElement.innerHTML = ""; // 既存の説明をクリア
-
-    if (imageSrc) {
-      const imageElement = document.createElement("img");
-      imageElement.src = imageSrc;
-      imageElement.alt = name;
-      imageElement.className = "tenju-image-body"; // 新しいクラスを設定
-      descriptionElement.appendChild(imageElement);
-    }
-
-    // 説明文を追加（画像の下に来るようにする）
-    descriptionElement.innerHTML += formatTextForHTML(description);
 
     // 天珠リストに追加
     addToTenjuList(name, description, imageSrc);
   }
 
   /**
-   * 天珠の情報を tenju-list に追加する関数（サブタイトルも追加）
+   * 天珠の情報を tenju-list に追加する関数
    * @param {string} name 天珠の名前
    * @param {string} description 天珠の説明
    * @param {string} imageSrc 天珠の画像URL
    */
   function addToTenjuList(name, description, imageSrc) {
     const tenjuList = document.querySelector('.tenju-list');
+
+    // リストアイテムを作成
     const listItem = document.createElement('div');
     listItem.classList.add('result-item');
 
-    // ヘッダーコンテナ（名前 + サブタイトル）
-    const headerContainer = document.createElement("div");
-    headerContainer.classList.add("header-container");
-
-    // 名前を追加
-    const nameElement = document.createElement('div');
-    nameElement.classList.add("result-header");
-    nameElement.innerHTML = `<strong>${name}</strong>`;
-    headerContainer.appendChild(nameElement);
-
-    // サブタイトルを追加（もし該当するものがあれば）
-    const subtitleText = subtitles[name] || "";
-    if (subtitleText) {
-      const subtitleElement = document.createElement("div");
-      subtitleElement.className = "custom-subtitle";
-      subtitleElement.innerText = subtitleText;
-      headerContainer.appendChild(subtitleElement);
-    }
-
-    listItem.appendChild(headerContainer);
-
-    // 説明文を追加（画像を先頭に配置）
-    const descriptionElement = document.createElement('div');
-    descriptionElement.classList.add('tenju-description');
-
-    if (imageSrc) {
-      const imageElement = document.createElement("img");
-      imageElement.src = imageSrc;
-      imageElement.alt = name;
-      imageElement.className = "tenju-image-body";
-      descriptionElement.appendChild(imageElement);
-    }
-
-    // 画像の下に説明文が来るようにする
-    descriptionElement.innerHTML += formatTextForHTML(description);
-    listItem.appendChild(descriptionElement);
+     // ヘッダー（名前 + サブタイトル）
+     const subtitleText = subtitles[name] || "";
+     listItem.innerHTML = `
+       <div class="result-header">
+         <strong class="tenju-name">${name}</strong>
+         <div class="custom-subtitle">${subtitleText}</div>
+       </div>
+       <div class="tenju-description">
+         ${imageSrc ? `<img src="${imageSrc}" alt="${name}" class="tenju-image-body">` : ""}
+         ${formatTextForHTML(description)}
+       </div>
+     `;
 
     // リストに追加
     tenjuList.appendChild(listItem);
-  }
+  } 
+  
 });

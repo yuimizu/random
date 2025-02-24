@@ -2,6 +2,7 @@ body {
     opacity: 0;
     transform: translateY(-20px);
     animation: fadeInSlow 1.5s ease-out forwards;
+    overflow-x: hidden;
 }
 
 /* フェードインアニメーション */
@@ -55,7 +56,6 @@ body {
 
 .result-header {
     color: #7da5ba;;
-    text-align: center;
     font-size: 1.5rem;
 }
 
@@ -82,12 +82,6 @@ body {
     }
 }
 
-.header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-  
 .tenju-description {
     display: flex;
     gap: 10px;
