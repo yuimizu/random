@@ -123,6 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("personality-header").innerHTML = result.name + "眼人の<br>性質や注意することは…";
     document.getElementById("personality-description").innerHTML = formatTextForHTML(result.personality);
 
+     // 文章の最後に「詳しくはこちら」のリンクを追加
+     const moreInfoLink = ' <a href="詳細ページのURL" target="_blank">詳しくはこちら</a>';
+     document.getElementById("personality-description").innerHTML = formatTextForHTML(result.personality) + moreInfoLink;
+
     updateTenjuSection("tenju-1", result.name + "眼天珠", result.tenju16);
   }
 
@@ -174,40 +178,5 @@ document.addEventListener("DOMContentLoaded", () => {
      descriptionElement.innerHTML = imageSrc
      ? `<img src="${imageSrc}" alt="${name}" class="tenju-image-body">${formatTextForHTML(description)}`
      : formatTextForHTML(description);
-
-
-    // 天珠リストに追加
-    addToTenjuList(name, description, imageSrc);
   }
-
-  /**
-   * 天珠の情報を tenju-list に追加する関数
-   * @param {string} name 天珠の名前
-   * @param {string} description 天珠の説明
-   * @param {string} imageSrc 天珠の画像URL
-   */
-  function addToTenjuList(name, description, imageSrc) {
-    const tenjuList = document.querySelector('.tenju-list');
-
-    // リストアイテムを作成
-    const listItem = document.createElement('div');
-    listItem.classList.add('result-item');
-
-     // ヘッダー（名前 + サブタイトル）
-     const subtitleText = subtitles[name] || "";
-     listItem.innerHTML = `
-       <div class="result-header">
-         <strong class="tenju-name">${name}</strong>
-         <div class="custom-subtitle">${subtitleText}</div>
-       </div>
-       <div class="tenju-description">
-         ${imageSrc ? `<img src="${imageSrc}" alt="${name}" class="tenju-image-body">` : ""}
-         ${formatTextForHTML(description)}
-       </div>
-     `;
-
-    // リストに追加
-    tenjuList.appendChild(listItem);
-  } 
-  
 });

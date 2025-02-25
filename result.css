@@ -38,13 +38,18 @@ body {
     margin-top: 5px;
 }
 
+#personality-description {
+    padding: 30px 50px;
+    line-height: 1.8;
+    color: #000;
+    text-align: start;
+}
+
 .heading {
     font-size: 2rem;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid #d4af37; 
+    background-color: #d4af37;
+    border-radius: 10px;
     padding: 20px; 
-    border-radius: 10px; 
-    backdrop-filter: blur(5px); 
     max-width: 500px;
     margin: 20px auto; 
 }
@@ -59,33 +64,12 @@ body {
     font-size: 1.5rem;
 }
 
-#personality-description,.accordion-body {
+.accordion-body {
     display: flex;
     padding: 30px 50px;
     line-height: 1.8;
     color: #000;
     text-align: start;
-}
-
-@media (max-width: 767px) {
-    #personality-description,.accordion-body {
-        flex-direction: column;
-        padding: 15px 20px;
-    }
-
-    .accordion-body img,.tenju-description img{
-        margin: 0 auto 20px;   
-    }
-    
-    .tenju-description{
-        flex-direction: column;
-    }
-}
-
-.tenju-description {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
 }
 
 .tenju-image-body {
@@ -102,19 +86,17 @@ body {
     margin-top: 2px;
 }
 
-.result-item {
-    padding: 30px 50px;
-    line-height: 1.8;
-    color: #000;
-    text-align: start;
-    background-color: #F8F8F8;
-    max-width: 990px;
-    margin: 0 auto 16px;
-}
+@media (max-width: 767px) {
+    #personality-description {
+        padding: 15px 20px;
+    }
+    
+    .accordion-body {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
 
-.result-item strong {
-    display: block;
-    color: #7da5ba;
-    font-size: 1.5rem;
-    margin-bottom: 5px;
+    .accordion-body img {
+        margin: 0 auto 20px;   
+    }   
 }
