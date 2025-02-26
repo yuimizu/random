@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("personality-description").innerHTML = formatTextForHTML(result.personality);
 
      // 文章の最後に「詳しくはこちら」のリンクを追加
-     const moreInfoLink = ' <a href="詳細ページのURL" target="_blank">詳しくはこちら</a>';
+     const moreInfoLink = ' <a href="詳細ページのURL" target="_blank" class="detail">詳しくはこちら</a>';
      document.getElementById("personality-description").innerHTML = formatTextForHTML(result.personality) + moreInfoLink;
 
     updateTenjuSection("tenju-1", result.name + "眼天珠", result.tenju16);

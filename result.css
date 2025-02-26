@@ -2,7 +2,6 @@ body {
     opacity: 0;
     transform: translateY(-20px);
     animation: fadeInSlow 1.5s ease-out forwards;
-    overflow-x: hidden;
 }
 
 /* フェードインアニメーション */
@@ -15,6 +14,14 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.offcanvas {
+    display: none;
+}
+
+.offcanvas.show {
+    display: block; 
 }
 
 #title{
@@ -43,6 +50,11 @@ body {
     line-height: 1.8;
     color: #000;
     text-align: start;
+}
+
+.detail {
+    display: block;
+    margin-top: 10px;
 }
 
 .heading {
