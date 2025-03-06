@@ -1,4 +1,5 @@
-body {
+html, body {
+    overflow-x: hidden;
     text-align: center;
     color: #fff; 
     font-family: Georgia, 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", HGS明朝E, メイリオ, Meiryo, serif;
